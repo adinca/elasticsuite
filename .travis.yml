@@ -45,9 +45,9 @@ before_install:
   - export ES_HOME=/usr/share/elasticsearch
   - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$ES_VERSION.deb
   - sudo dpkg -i --force-confnew elasticsearch-$ES_VERSION.deb
-  - yes | sudo $ES_HOME/bin/elasticsearch-plugin remove analysis-icu
+  - yes | sudo $ES_HOME/bin/elasticsearch-plugin remove analysis-icu || return 0
   - yes | sudo $ES_HOME/bin/elasticsearch-plugin install analysis-icu
-  - yes | sudo $ES_HOME/bin/elasticsearch-plugin remove analysis-phonetic
+  - yes | sudo $ES_HOME/bin/elasticsearch-plugin remove analysis-phonetic || return 0
   - yes | sudo $ES_HOME/bin/elasticsearch-plugin install analysis-phonetic
   - sudo chgrp elasticsearch /etc/default/elasticsearch -R
   - sudo service elasticsearch start
