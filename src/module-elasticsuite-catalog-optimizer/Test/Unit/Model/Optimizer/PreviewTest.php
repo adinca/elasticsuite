@@ -79,7 +79,7 @@ class PreviewTest extends TestCase
     /**
      * {@inheritDoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->optimizer              = $this->getOptimizerMock();
         $this->previewItemFactory     = $this->getPreviewItemFactoryMock();
