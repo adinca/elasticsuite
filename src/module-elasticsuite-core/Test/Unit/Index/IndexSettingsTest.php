@@ -78,13 +78,12 @@ class IndexSettingsTest extends \PHPUnit\Framework\TestCase
     /**
      * Test an exception is raised when accessing an index that does not exists in the configuration.
      *
-     * @expectedException \LogicException
-     * @expectedExceptionMessage No indices found with identifier invalidIndex
-     *
      * @return void
      */
     public function testGetInvalidIndexConfig()
     {
+        $this->expectExceptionMessage("No indices found with identifier invalidIndex");
+        $this->expectException(\LogicException::class);
         $this->indexSettings->getIndexConfig('invalidIndex');
     }
 
@@ -128,7 +127,7 @@ class IndexSettingsTest extends \PHPUnit\Framework\TestCase
     /**
      * Generate the index settings helper mock.
      *
-     * @return PHPUnit_Framework_MockObject_MockObject
+     * @return \PHPUnit\Framework\MockObject\MockObject
      */
     private function getIndexSettingsMock()
     {
@@ -158,7 +157,7 @@ class IndexSettingsTest extends \PHPUnit\Framework\TestCase
     /**
      * Generate the indices config mock.
      *
-     * @return PHPUnit_Framework_MockObject_MockObject
+     * @return \PHPUnit\Framework\MockObject\MockObject
      */
     private function getIndicesConfigMock()
     {
@@ -171,7 +170,7 @@ class IndexSettingsTest extends \PHPUnit\Framework\TestCase
     /**
      * Generate the analysis config mock.
      *
-     * @return PHPUnit_Framework_MockObject_MockObject
+     * @return \PHPUnit\Framework\MockObject\MockObject
      */
     private function getAnalysisConfigMock()
     {
